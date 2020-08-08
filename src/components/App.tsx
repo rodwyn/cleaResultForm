@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
+import { ThemeProvider } from '@material-ui/core/styles';
 import axios from 'axios';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
@@ -6,6 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import SearchForm from './SearchForm';
 import DataTable from './DataTable';
 import '../styles/index.scss';
+import { theme } from '../Theme';
 
 /*
  * Use a proxyURL because a CORS problem
@@ -69,29 +71,31 @@ export default function App() {
       .then(response => {
         setState({ ...state, loadingData: false, data: response.data });
         console.log(state.data);
-      }
-      )
+      })
       .catch(error => console.error(error));
   };
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <Container maxWidth="lg">
-        <SearchForm
-          clickSearchHandler={handleSearchButton}
-          clickClearHandler={handleClearButton}
-          changeHandler={handleInputChange}
-          formState={state}
-        ></SearchForm>
-        {state.loadingData && (
-          <div>
-            <span>Loading data...</span>
-            <CircularProgress color="secondary" />
-          </div>
-        )}
-        <DataTable></DataTable>
-      </Container>
-    </React.Fragment>
+    <ThemeProvider theme={theme}>
+      <React.Fragment>
+        <CssBaseline />
+        <Container maxWidth="lg">
+          <h1>../fonts/</h1>
+          <SearchForm
+            clickSearchHandler={handleSearchButton}
+            clickClearHandler={handleClearButton}
+            changeHandler={handleInputChange}
+            formState={state}
+          ></SearchForm>
+          {state.loadingData && (
+            <div>
+              <span>Loading data...</span>
+              <CircularProgress color="secondary" />
+            </div>
+          )}
+          <DataTable></DataTable>
+        </Container>
+      </React.Fragment>
+    </ThemeProvider>
   );
 }
