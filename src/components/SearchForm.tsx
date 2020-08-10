@@ -54,15 +54,17 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     buttonSearch: {
       margin: theme.spacing(1),
-      height: '5ch',
-      width: '15ch',
-      color: 'white',
-      background: 'red',
-      '&:hover': {
-        background: 'black',
-      },
+      color: '#FFFFFF',
+      background: '#DA3732',
       border: 0,
       borderRadius: 0,
+      '&:hover': {
+        background: '#F31A0B',
+      },
+      '&:disabled ': {
+        background: '#BDBDBD',
+        color: '#707070',
+      },
     },
     buttonClear: {
       margin: theme.spacing(1),
