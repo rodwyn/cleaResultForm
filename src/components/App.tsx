@@ -80,7 +80,6 @@ export default function App() {
       <React.Fragment>
         <CssBaseline />
         <Container maxWidth="lg">
-          <h1>../fonts/</h1>
           <SearchForm
             clickSearchHandler={handleSearchButton}
             clickClearHandler={handleClearButton}
